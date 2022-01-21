@@ -35,8 +35,12 @@ namespace DSharpPlus.CommandsNext.Attributes
     {
         public override Task<bool> ExecuteCheckAsync(CommandContext ctx, bool help)
         {
+            var cfg = ctx.Config;
             var app = ctx.Client.CurrentApplication;
             var me = ctx.Client.CurrentUser;
+
+            if (cfg.Selfbot)
+                return Task.FromResult(ctx.User.Id == me.Id);
 
             return app != null ? Task.FromResult(app.Owners.Any(x => x.Id == ctx.User.Id)) : Task.FromResult(ctx.User.Id == me.Id);
         }

@@ -63,6 +63,12 @@ namespace DSharpPlus.CommandsNext
         public PrefixResolverDelegate PrefixResolver { internal get; set; } = null;
 
         /// <summary>
+        /// <para>Sets whether the bot should only respond to messages from its own account. This is useful for selfbots.</para>
+        /// <para>Defaults to false.</para>
+        /// </summary>
+        public bool Selfbot { internal get; set; } = false;
+
+        /// <summary>
         /// <para>Sets whether to allow mentioning the bot to be used as command prefix.</para>
         /// <para>Defaults to true.</para>
         /// </summary>
@@ -157,6 +163,7 @@ namespace DSharpPlus.CommandsNext
             this.EnableMentionPrefix = other.EnableMentionPrefix;
             this.IgnoreExtraArguments = other.IgnoreExtraArguments;
             this.UseDefaultCommandHandler = other.UseDefaultCommandHandler;
+            this.Selfbot = other.Selfbot;
             this.Services = other.Services;
             this.StringPrefixes = other.StringPrefixes?.ToArray();
             this.DmHelp = other.DmHelp;

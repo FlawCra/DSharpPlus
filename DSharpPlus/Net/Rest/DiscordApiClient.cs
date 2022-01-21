@@ -3545,9 +3545,14 @@ namespace DSharpPlus.Net
             var route = Endpoints.GATEWAY;
             if (this.Discord.Configuration.TokenType == TokenType.Bot)
                 route += Endpoints.BOT;
+
+            if (this.Discord.Configuration.TokenType == TokenType.User)
+                route += Endpoints.BOT;
+
             var bucket = this.Rest.GetBucket(RestRequestMethod.GET, route, new { }, out var path);
 
             var url = Utilities.GetApiUriFor(path);
+
             var res = await this.DoRequestAsync(this.Discord, bucket, url, RestRequestMethod.GET, route, headers).ConfigureAwait(false);
 
             var info = JObject.Parse(res.Response).ToObject<GatewayInfo>();

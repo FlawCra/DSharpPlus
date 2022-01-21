@@ -100,6 +100,7 @@ namespace DSharpPlus
             {
                 TokenType.Bearer => $"Bearer {config.Token}",
                 TokenType.Bot => $"Bot {config.Token}",
+                TokenType.User => $"{config.Token}",
                 _ => throw new ArgumentException("Invalid token type specified.", nameof(config.Token)),
             };
         }

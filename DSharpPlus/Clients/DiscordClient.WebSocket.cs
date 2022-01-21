@@ -511,7 +511,7 @@ namespace DSharpPlus
         #region Semaphore Methods
 
         private SocketLock GetSocketLock()
-            => SocketLocks.GetOrAdd(this.CurrentApplication.Id, appId => new SocketLock(appId, this.GatewayInfo.SessionBucket.MaxConcurrency));
+            => SocketLocks.GetOrAdd(this.CurrentUser.Id, appId => new SocketLock(appId, this.GatewayInfo.SessionBucket.MaxConcurrency));
 
         #endregion
     }

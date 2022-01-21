@@ -218,6 +218,9 @@ namespace DSharpPlus.CommandsNext
             if (!this.Config.EnableDms && e.Channel.IsPrivate)
                 return;
 
+            if (this.Config.Selfbot && e.Author.Id != this.Client.CurrentUser.Id)
+                return;
+
             var mpos = -1;
             if (this.Config.EnableMentionPrefix)
                 mpos = e.Message.GetMentionPrefixLength(this.Client.CurrentUser);
