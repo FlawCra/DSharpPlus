@@ -501,7 +501,6 @@ namespace DSharpPlus
 
                 default:
                     await this.OnUnknownEventAsync(payload).ConfigureAwait(false);
-                    this.Logger.LogWarning(LoggerEvents.WebSocketReceive, "Unknown event: {EventName}\npayload: {Payload}", payload.EventName, payload.Data);
                     break;
 
                     #endregion
